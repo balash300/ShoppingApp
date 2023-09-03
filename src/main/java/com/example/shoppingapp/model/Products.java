@@ -28,7 +28,7 @@ public class Products {
     private String description;
     @Column(name = "standard_cost")
     @NotBlank
-    private String standartCost;
+    private String standardCost;
     @Column(name = "list_price")
     @NotBlank
     private Long listPrice;
