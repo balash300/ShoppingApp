@@ -50,7 +50,11 @@ public class ContactImpl implements ContactService {
 
     @Override
     public void deleteByContactId(Long contactId) {
-
+        if (contactId == null){
+            throw new RuntimeException("There is no such information");
+        } else {
+            contactRepository.deleteById(contactId);
+        }
     }
 
     @Override

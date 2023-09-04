@@ -14,5 +14,5 @@ public class CustomersRequest {
     private String name;
     private String address;
     private String website;
-    private int creditLimit;
+    private String creditLimit;
 }
