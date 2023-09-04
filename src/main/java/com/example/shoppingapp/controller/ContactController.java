@@ -1,12 +1,11 @@
 package com.example.shoppingapp.controller;
 
 import com.example.shoppingapp.dto.ContactDto;
+import com.example.shoppingapp.dto.request.ContactRequest;
+import com.example.shoppingapp.model.Contacts;
 import com.example.shoppingapp.service.ContactService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +22,21 @@ public class ContactController {
     @GetMapping(value = "/getContactsByContactId/{contactId}")
     public ContactDto getContactsByContactId(@PathVariable(value = "contactId") Long contactId){
         return getContactsByContactId(contactId);
+    }
+
+    @PostMapping(value = "/saveContacts")
+    public void saveContacts(@RequestBody ContactRequest contactRequest){
+        contactService.saveContacts(contactRequest);
+    }
+
+    @PostMapping(value = "/updateContacts")
+    public void updateContacts(@RequestBody ContactRequest contactRequest){
+        contactService.updateContacts(contactRequest);
+    }
+
+    @DeleteMapping(value = "/deleteByContactId/{contactId}")
+    public void deleteByContactId(@PathVariable(value = "contactId") Long contactId) {
+        contactService.deleteByContactId(contactId);
     }
 
 }
