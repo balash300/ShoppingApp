@@ -23,4 +23,8 @@ public class Contacts {
     private String phone;
 
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customers_id")
+    private Customers customers;
+
 }

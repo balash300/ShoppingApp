@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "customers")
@@ -21,5 +24,11 @@ public class Customers {
     private String address;
     private String website;
     private String  creditLimit;
+
+    @OneToMany(mappedBy = "customers", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Contacts> contactses = new ArrayList<>();
+
+    @OneToMany(mappedBy = "customers", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Orders> orderses = new ArrayList<>();
 
 }

@@ -22,4 +22,12 @@ public class OrderItems {
     private BigDecimal quantity;
     private String unitPrice;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "orders_id")
+    private Orders orders;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "products_id")
+    private Products products;
+
 }

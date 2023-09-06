@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,4 +27,8 @@ public class Employees {
     private String phone;
     private Date hireDate;
     private String jobTitle;
+
+    @OneToMany(mappedBy = "employees", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Orders> orderses = new ArrayList<>();
+
 }

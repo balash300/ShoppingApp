@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "products")
@@ -22,5 +25,7 @@ public class Products {
     private String standardCost;
     private String listPrice;
 
+    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItems> orderItemses = new ArrayList<>();
 
 }
