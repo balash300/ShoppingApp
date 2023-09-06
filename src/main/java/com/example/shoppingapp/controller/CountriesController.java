@@ -16,7 +16,7 @@ public class CountriesController {
     final CountriesService countriesService;
 
     @GetMapping(value = "/countriesList")
-    public List<CountriesDto> getCartItemInfo() {
+    public List<CountriesDto> getCountriesInfo() {
         return countriesService.getAll();
     }
 

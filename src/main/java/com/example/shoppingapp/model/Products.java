@@ -37,10 +37,7 @@ public class Products {
     @JoinColumn(name = "category_id")
     private ProductCategories productCategories;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinTable(name = "inventories",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "warehouse_id"))
-    private List<Warehouses> warehouseses = new ArrayList<>();
+    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Inventories> inventorieses = new ArrayList<>();
 
 }

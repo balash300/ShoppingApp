@@ -9,13 +9,13 @@ import java.util.List;
 
 public interface InventoriesService {
 
-    InventoriesDto getInventoriesByProductIDAndWarehouseID(Long productID, Long warehouseID);
+    InventoriesDto getInventoriesById(Long id);
 
     void saveInventories(InventoriesRequest inventoriesRequest);
 
     void updateInventories(InventoriesRequest inventoriesRequest);
 
-//    void deleteByID(ProductDto productID, WarehousesDto warehouseID);
+    void deleteById(Long id);
 
     List<InventoriesDto> getAll();
 

@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface WarehousesRepository extends JpaRepository<Warehouses, Long> {
 
-    List<Warehouses> getWarehousesByWarehouseID(Long warehouseID);
+    Warehouses getWarehousesByWarehouseID(Long warehouseID);
 
 }

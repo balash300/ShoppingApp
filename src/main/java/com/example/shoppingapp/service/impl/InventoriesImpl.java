@@ -21,17 +21,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class InventoriesImpl implements InventoriesService {
 
-    private final ProductRepository productRepository;
-    private final WarehousesRepository warehousesRepository;
     private final InventoriesRepository inventoriesRepository;
 
     @Override
-    public InventoriesDto getInventoriesByProductIDAndWarehouseID(Long productID, Long warehouseID) {
-        Products products = (Products) productRepository.getProductsByProductID(productID);
-        Warehouses warehouses = (Warehouses) warehousesRepository.getWarehousesByWarehouseID(warehouseID);
+    public InventoriesDto getInventoriesById(Long id) {
+        Inventories inventories = inventoriesRepository.getInventoriesById(id);
         return InventoriesDto.builder()
-                .quantity(products.getProductID())
-                .quantity(warehouses.getWarehouseID())
+                .quantity(inventories.getQuantity())
                 .build();
     }
 
@@ -52,18 +48,15 @@ public class InventoriesImpl implements InventoriesService {
         inventoriesRepository.save(inventories);
     }
 
-//    @Override
-//    public void deleteByID(ProductDto productID, WarehousesDto warehouseID) {
-//
-//        Products products = (Products) productRepository.getProductsByProductID(productID);
-//        Warehouses warehouses = (Warehouses) warehousesRepository.getWarehousesByWarehouseID(warehouseID);
-//        if (products.getProductID().equals(null) || warehouses.getWarehouseID().equals(null)) {
-//            throw new RuntimeException("There is no such information");
-//        } else {
-//            inventoriesRepository.deleteById(productID, warehouseID);
-//        }
-//
-//    }
+    @Override
+    public void deleteById(Long id) {
+        if (id == null) {
+            throw new RuntimeException("There is no such information");
+        } else {
+            inventoriesRepository.deleteById(id);
+        }
+    }
+
 
     @Override
     public List<InventoriesDto> getAll() {
