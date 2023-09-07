@@ -1,6 +1,7 @@
 package com.example.shoppingapp.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,21 +12,35 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "products")
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "products")
 public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "products_id", nullable = false)
-    private Long productsId;
+    @Column(name = "product_id", nullable = false)
+    private Long productID;
+    @Column(name = "product_name")
+    @NotBlank
     private String productName;
+    @NotBlank
     private String description;
+    @Column(name = "standard_cost")
+    @NotBlank
     private String standardCost;
-    private String listPrice;
-
+    @Column(name = "list_price")
+    @NotBlank
+    private Long listPrice;
+  
     @OneToMany(mappedBy = "products", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItems> orderItemses = new ArrayList<>();
+  
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
+    private ProductCategories productCategories;
+
+    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Inventories> inventorieses = new ArrayList<>();
 
 }
