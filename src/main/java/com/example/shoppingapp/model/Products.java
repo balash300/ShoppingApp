@@ -32,7 +32,10 @@ public class Products {
     @Column(name = "list_price")
     @NotBlank
     private Long listPrice;
-
+  
+    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItems> orderItemses = new ArrayList<>();
+  
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private ProductCategories productCategories;

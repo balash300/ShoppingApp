@@ -5,14 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContactRequest {
-    private Long contactId;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
+public class OrdersRequest {
+    private Long ordersId;
+    private String status;
+    private Date orderdate;
 }

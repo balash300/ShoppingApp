@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContactRequest {
-    private Long contactId;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
+public class ProductsRequest {
+    private Long productsId;
+    private String productName;
+    private String description;
+    private String standardCost;
+    private String listPrice;
 }

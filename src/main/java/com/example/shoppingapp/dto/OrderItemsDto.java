@@ -5,13 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class ContactDto {
-    private String firstName;
-    private String email;
-    private String phone;
+public class OrderItemsDto {
+    private BigDecimal quantity;
+    private String unitPrice;
 }
