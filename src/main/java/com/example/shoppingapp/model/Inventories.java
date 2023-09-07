@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -20,5 +23,14 @@ public class Inventories {
     private Long id;
     @NotBlank
     private Long quantity;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private Products products;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "warehouse_id", insertable = false, updatable = false)
+    private Warehouses warehouses;
 
 }

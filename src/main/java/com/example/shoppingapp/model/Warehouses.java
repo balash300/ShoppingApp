@@ -29,7 +29,7 @@ public class Warehouses {
     @JoinColumn(name = "location_id")
     private Locations locations;
 
-    @ManyToMany(mappedBy = "warehouseses", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    private List<Products> productses = new ArrayList<>();
+    @OneToMany(mappedBy = "warehouses", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Inventories> inventorieses = new ArrayList<>();
 
 }
